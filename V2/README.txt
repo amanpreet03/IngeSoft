@@ -13,8 +13,7 @@ STRUTTURA CARTELLE
 FUNZIONALITÀ INCLUSE
   V1: configuratore – gestione luoghi, tipi di visita, volontari, visualizzazioni
   V2: + volontario  – login, dichiarazione disponibilità, cambio password
-  V3: + ciclo mensile – pianificazione, rimozioni a cascata, fasi operative
-  V4: + fruitore    – iscrizioni, disdette, visualizzazione visite
+ 
 
 CREDENZIALI DI DEMO
   Configuratori:  conf1 / conf1pass     conf2 / admin123 (primo accesso)
