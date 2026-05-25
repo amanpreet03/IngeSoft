@@ -1,13 +1,17 @@
+<<<<<<< HEAD
 
   VISITE GUIDATE MANTOVA  –  Versione 4
 
+=======
+VISITE GUIDATE MANTOVA  –  Versione 4
+>>>>>>> 3be887a78f9682633a61f9dad5a3c0542ba1cf17
 
 STRUTTURA CARTELLE
   src/
     model/      – classi di dominio
     storage/    – JsonIO (parser JSON) + Persistenza (lettura/scrittura file)
-    controller/ – Controller (logica) + Pianificatore (V3)
-    ui/         – MenuConfiguratore, MenuVolontario (V2+), MenuFruitore (V4)
+    controller/ – Controller (logica) + Pianificatore 
+    ui/         – MenuConfiguratore, MenuVolontario , MenuFruitore 
     Main.java   – punto di ingresso
   json/         – file dati (creati/aggiornati dal programma)
   out/          – cartella per i .class compilati
@@ -35,7 +39,7 @@ COMPILAZIONE ED ESECUZIONE
   java -cp out Main
 
 FORMATO DATE NEI JSON
-  GG-MM-AAAA  (es. 25-07-2025)
+  GG-MM-AAAA  (es. 25-07-2026)
 
 NOTE
   - I file JSON vengono aggiornati automaticamente dopo ogni operazione.
