@@ -21,9 +21,7 @@ public class Controller {
         this.sistema = sistema;
     }
 
-    // ================================================================
-    // LOGIN / REGISTRAZIONE
-    // ================================================================
+    // ================== LOGIN / REGISTRAZIONE ================
 
     public Configuratore loginConfiguratore(String username, String password) {
         Configuratore c = sistema.trovaConfiguratore(username)
@@ -62,24 +60,7 @@ public class Controller {
         Persistenza.salvaUtenti(sistema);
     }
 
-    public Fruitore loginFruitore(String username, String password) {
-        Fruitore f = sistema.trovaFruitore(username)
-            .orElseThrow(() -> new IllegalArgumentException("Username non trovato."));
-        if (!f.verificaPassword(password))
-            throw new IllegalArgumentException("Password errata.");
-        return f;
-    }
-
-    public void registraFruitore(String username, String password) {
-        if (sistema.usernameOccupato(username))
-            throw new IllegalArgumentException("Username già in uso: " + username);
-        sistema.aggiungiFruitore(new Fruitore(username, password));
-        Persistenza.salvaUtenti(sistema);
-    }
-
-    // ================================================================
-    // INIZIALIZZAZIONE (V1)
-    // ================================================================
+    // ============ INIZIALIZZAZIONE ==============
 
     public void inizializza(String ambito, int maxPersone) {
         sistema.setAmbito(ambito);
@@ -99,9 +80,7 @@ public class Controller {
         Persistenza.salvaAmbito(sistema);
     }
 
-    // ================================================================
-    // LUOGHI (V1)
-    // ================================================================
+    // ============= LUOGHI ===========
 
     /*
      * Crea un Luogo in memoria senza ancora salvarlo.
@@ -136,17 +115,13 @@ public class Controller {
 
     public Collection<Luogo> getLuoghi() { return sistema.getLuoghi(); }
 
-    // ================================================================
-    // TIPI DI VISITA (V1)
-    // ================================================================
+    // ========= TIPI DI VISITA =================
 
     public Collection<TipoVisita> getTipiVisita()     { return sistema.getTipiVisita(); }
 
     public Optional<TipoVisita> trovaTipo(String tag) { return sistema.trovaTipo(tag); }
 
-    // ================================================================
-    // VOLONTARI (V1)
-    // ================================================================
+    // ================ VOLONTARI =================
 
     public Volontario creaVolontario(String nickname, String password) {
         if (sistema.usernameOccupato(nickname))
@@ -170,9 +145,7 @@ public class Controller {
         return sistema.tipiDelVolontario(v.getNickname());
     }
 
-    // ================================================================
-    // RIMOZIONI CON CASCATA (V3)
-    // ================================================================
+    // ================ RIMOZIONI CON CASCATA ======================
 
     private void verificaFasePiano() {
         if (sistema.getFase() != FaseOperativa.PIANO)
@@ -257,9 +230,7 @@ public class Controller {
         daRimuovere.forEach(sistema::rimuoviLuogo);
     }
 
-    // ================================================================
-    // CICLO MENSILE (V3)
-    // ================================================================
+    // ================ CICLO MENSILE ===============
 
     public FaseOperativa getFase()        { return sistema.getFase(); }
     public int getAnnoRaccolta()          { return sistema.getAnnoRaccolta(); }
@@ -303,9 +274,7 @@ public class Controller {
         Persistenza.salvaPiano(sistema);
     }
 
-    // ================================================================
-    // DISPONIBILITÀ (V2)
-    // ================================================================
+    // ================= DISPONIBILITÀ =================
 
     public void aggiungiDisponibilita(Volontario v, LocalDate data) {
         if (sistema.getFase() != FaseOperativa.RACCOLTA)
@@ -336,9 +305,7 @@ public class Controller {
         return v.getDisponibilita(sistema.getAnnoRaccolta(), sistema.getMeseRaccolta());
     }
 
-    // ================================================================
-    // DATE PRECLUSE (V1/V3)
-    // ================================================================
+    // ============ DATE PRECLUSE ===========
 
     public void aggiungiDataPreclusa(LocalDate d) {
         sistema.aggiungiDataPreclusa(d);
@@ -349,9 +316,7 @@ public class Controller {
         return sistema.getDatePrecluse(anno, mese);
     }
 
-    // ================================================================
-    // VISITE (V1-V4)
-    // ================================================================
+    // ================ VISITE =================
 
     public List<Visita> getVisitePerStato(StatoVisita s) {
         return s == StatoVisita.EFFETTUATA
@@ -359,21 +324,11 @@ public class Controller {
             : sistema.getVisitePerStato(s);
     }
 
-    // visite confermate in cui questo volontario è la guida (V2+)
+    // visite confermate in cui questo volontario è la guida 
     public List<Visita> getVisiteConfermate(Volontario v) {
         return sistema.getVisitePerStato(StatoVisita.CONFERMATA).stream()
             .filter(vis -> vis.getGuidaNickname().equals(v.getNickname()))
             .collect(Collectors.toList());
-    }
-
-    // tutte le visite visibili al fruitore, ordinate per data (V4)
-    public List<Visita> getVisiteFruitore() {
-        List<Visita> out = new ArrayList<>();
-        out.addAll(sistema.getVisitePerStato(StatoVisita.PROPOSTA));
-        out.addAll(sistema.getVisitePerStato(StatoVisita.CONFERMATA));
-        out.addAll(sistema.getVisitePerStato(StatoVisita.CANCELLATA));
-        out.sort(Comparator.comparing(Visita::getData));
-        return out;
     }
 
     public List<Visita> getVisiteProposte() {
@@ -381,50 +336,6 @@ public class Controller {
             .sorted(Comparator.comparing(Visita::getData))
             .collect(Collectors.toList());
     }
-
-    // visite a cui il fruitore si è iscritto (V4)
-    public List<Visita> getMieIscrizioni(Fruitore f) {
-        return getVisiteFruitore().stream()
-            .filter(v -> v.getIscrizioni().stream()
-                .anyMatch(i -> i.getUsernameFruitore().equalsIgnoreCase(f.getUsername())))
-            .collect(Collectors.toList());
-    }
-
-    // ================================================================
-    // ISCRIZIONI FRUITORE (V4)
-    // ================================================================
-
-    public String iscriviAVisita(Fruitore f, Visita visita, int persone) {
-        int maxConsentito = sistema.getMaxPersone();
-        if (persone < 1 || persone > maxConsentito)
-            throw new IllegalArgumentException(
-                "Il numero di persone deve essere tra 1 e " + maxConsentito + ".");
-        if (visita.getStato() != StatoVisita.PROPOSTA)
-            throw new IllegalStateException("La visita non è aperta alle iscrizioni.");
-        TipoVisita tv = sistema.trovaTipo(visita.getTipoTag())
-            .orElseThrow(() -> new IllegalStateException("Tipo di visita non trovato."));
-        Iscrizione i = new Iscrizione(f.getUsername(), persone);
-        visita.aggiungiIscrizione(i, tv.getMax());
-        Persistenza.salvaPrenotazioni(sistema);
-        Persistenza.salvaPiano(sistema);
-        return i.getCodice();
-    }
-
-    public void disdiciIscrizione(Fruitore f, Visita visita, String codice) {
-        if (visita.getStato() != StatoVisita.PROPOSTA
-                && visita.getStato() != StatoVisita.COMPLETA)
-            throw new IllegalStateException(
-                "Non puoi disdire: visita già " + visita.getStato() + ".");
-        Iscrizione trovata = visita.cercaIscrizione(codice)
-            .orElseThrow(() -> new IllegalArgumentException("Codice non trovato."));
-        if (!trovata.getUsernameFruitore().equalsIgnoreCase(f.getUsername()))
-            throw new IllegalArgumentException("Questo codice non appartiene al tuo account.");
-        visita.rimuoviIscrizione(codice);
-        Persistenza.salvaPrenotazioni(sistema);
-        Persistenza.salvaPiano(sistema);
-    }
-
-    public Collection<Fruitore> getFruitori() { return sistema.getFruitori(); }
 
     // accesso al sistema (usato dalla UI per ricerche puntuali)
     public Sistema getSistema() { return sistema; }

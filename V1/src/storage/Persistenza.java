@@ -90,17 +90,7 @@ public class Persistenza {
             int maxP      = JsonIO.intSafe(d.get("max-partecipanti"));
             List<String> vol = new ArrayList<>();
             for (Object v : JsonIO.listaSafe(d.get("volontari"))) vol.add(JsonIO.strSafe(v));
-            return TipoVisita.builder(tag, titolo, luogoTag)
-                .descrizione(descr)
-                .puntoIncontro(puntoInc)
-                .periodo(di, df)
-                .giorni(giorni)
-                .oraInizio(ora)
-                .durata(durata)
-                .bigliettoRichiesto(bgl)
-                .partecipanti(minP, maxP)
-                .volontari(vol)
-                .build();
+            return new TipoVisita(tag, titolo, luogoTag, descr, puntoInc, di, df, giorni, ora, durata, bgl, minP, maxP, vol);
         } catch (Exception e) {
             System.err.println("[Persistenza] Errore parsing tipo " + tag + ": " + e.getMessage());
             return null;
@@ -123,7 +113,6 @@ public class Persistenza {
                 switch (tipo) {
                     case 1 -> s.aggiungiConfiguratore(new Configuratore(e.getKey(), pwdHash, primo));
                     case 2 -> s.aggiungiVolontario(new Volontario(e.getKey(), pwdHash, primo));
-                    case 3 -> s.aggiungiFruitore(new Fruitore(e.getKey(), pwdHash, false));
                 }
             } catch (Exception ignored) {}
         }
@@ -276,13 +265,7 @@ public class Persistenza {
             ud.put("primo-accesso", v.isPrimoAccesso());
             root.put(v.getNickname(), ud);
         }
-        for (Fruitore f : s.getFruitori()) {
-            Map<String, Object> ud = JsonIO.nuovaMappa();
-            ud.put("tipo",          3L);
-            ud.put("password-hash", f.getPasswordHash());
-            ud.put("primo-accesso", false);
-            root.put(f.getUsername(), ud);
-        }
+       
         JsonIO.scrivi(Percorsi.UTENTI, root);
     }
 

@@ -24,7 +24,6 @@ public class SistemaVisite {
     private final Map<String, TipoVisita>     tipiVisita     = new LinkedHashMap<>();
     private final Map<String, Configuratore>  configuratori  = new LinkedHashMap<>();
     private final Map<String, Volontario>     volontari      = new LinkedHashMap<>();
-    private final Map<String, Fruitore>       fruitori       = new LinkedHashMap<>();
 
     // visite correnti (proposte / complete / confermate / cancellate)
     private final List<Visita> visite   = new ArrayList<>();
@@ -194,8 +193,7 @@ public class SistemaVisite {
 */
     public boolean usernameOccupato(String u) {
         return configuratori.containsKey(u)
-            || volontari.containsKey(u)
-            || fruitori.containsKey(u);
+            || volontari.containsKey(u);
     }
 
     // usato dalla persistenza per caricare lo storico

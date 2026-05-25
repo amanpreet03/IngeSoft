@@ -114,7 +114,6 @@ public class Persistenza {
                 switch (tipo) {
                     case 1 -> s.aggiungiConfiguratore(new Configuratore(e.getKey(), pwdHash, primo));
                     case 2 -> s.aggiungiVolontario(new Volontario(e.getKey(), pwdHash, primo));
-                    case 3 -> s.aggiungiFruitore(new Fruitore(e.getKey(), pwdHash, false));
                 }
             } catch (Exception ignored) {}
         }

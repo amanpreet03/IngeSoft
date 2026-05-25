@@ -217,5 +217,13 @@ public class ControllerConfiguratore {
             ? sistema.getArchivio()
             : sistema.getVisitePerStato(s);
     }
+
+    // ================ UTILITY ================
+    
+    private void salva() {
+        Persistenza.salvaUtenti(sistema);
+        Persistenza.salvaAmbito(sistema);
+        Persistenza.salvaPiano(sistema);
+    }
 }
     

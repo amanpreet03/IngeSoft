@@ -45,7 +45,7 @@ public class Configuratore {
         this.primoAccesso = false;
     }
 
-    public boolean isPasswordCambiata() { return passwordCambiata; }
+    public boolean isPasswordCambiata(boolean passwordCambiata) { return passwordCambiata; }
 
     private static String hash(String input) {
         return Integer.toHexString(input.hashCode());
@@ -60,7 +60,7 @@ public class Configuratore {
         return username.equalsIgnoreCase(c.username); 
     }  
 
-    @Dverride 
+    @Override
     public int hashCode() {
         return username.toLowerCase().hashCode();
     }

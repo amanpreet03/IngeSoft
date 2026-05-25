@@ -346,8 +346,16 @@ public class MenuConfiguratore {
         boolean big = Console.leggiSiNo("  Biglietto richiesto?");
         int minP = Console.leggiInt("  Min partecipanti: ", 1);
         int maxP = Console.leggiInt("  Max partecipanti (>= " + minP + "): ", minP);
-        return new TipoVisita(luogoTag, tag, tit, descr, punto,
-            di, df, giorni, ora, dur, big, minP, maxP);
+        return TipoVisita.builder(tag, tit, luogoTag)
+            .descrizione(descr)
+            .puntoIncontro(punto)
+            .periodo(di, df)
+            .giorni(giorni)
+            .oraInizio(ora)
+            .durata(dur)
+            .bigliettoRichiesto(big)
+            .partecipanti(minP, maxP)
+            .build();
     }
 
     void raccogliVolontariPerTipo(TipoVisita tv) {

@@ -93,4 +93,9 @@ public class TipoVisita {
 
     @Override
     public String toString() { return "[" + tag + "] " + titolo; }
+
+    public static Object builder(String tag2, String tit, String luogoTag2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'builder'");
+    }
 }
