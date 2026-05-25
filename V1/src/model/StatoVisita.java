@@ -1,4 +1,4 @@
-package archivio;
+package model;
 
 // stati del ciclo di vita di una visita guidata
 public enum StatoVisita {

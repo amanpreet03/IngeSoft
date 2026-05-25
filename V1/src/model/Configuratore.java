@@ -1,4 +1,4 @@
-package archivio;
+package model;
 
 /** rappresenta un configuratore dell'applicazione, con username e password
  * Invariante: username != null && !username.isEmpty() && passwordHash != null

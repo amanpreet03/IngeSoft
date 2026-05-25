@@ -1,4 +1,4 @@
-package archivio;
+package model;
 
 import java.util.UUID;
 
