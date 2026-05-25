@@ -15,9 +15,9 @@ public class Main {
         new File("json").mkdirs();
         new File("out").mkdirs();
 
-        System.out.println("╔══════════════════════════════════════════╗");
-        System.out.println("║  VISITE GUIDATE MANTOVA  –  Versione 2   ║");
-        System.out.println("╚══════════════════════════════════════════╝");
+        System.out.println("╔═════════════════════════════════════════╗");
+        System.out.println("║  VISITE GUIDATE MANTOVA    Versione 2   ║");
+        System.out.println("╚═════════════════════════════════════════╝");
 
         Sistema sistema = new Sistema();
         java.io.File fUtenti = new java.io.File("json/users.json");

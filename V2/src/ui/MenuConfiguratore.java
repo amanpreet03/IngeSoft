@@ -6,7 +6,7 @@ import model.*;
 import java.time.*;
 import java.util.*;
 
-// interfaccia testuale per il configuratore (V1 + estensioni V2, V3)
+// interfaccia testuale per il configuratore 
 public class MenuConfiguratore {
 
     private final Controller ctrl;
@@ -70,7 +70,7 @@ public class MenuConfiguratore {
                 else esci = true;
                 continue;
             }
-            System.out.println("  Ambito: " + ctrl.getAmbito() + " | Fase: " + ctrl.getFase());
+            System.out.println("  Ambito: " + ctrl.getAmbito());
             System.out.println("  ─── Dati ───────────────────────────────");
             System.out.println("  1.  Aggiungi luogo");
             System.out.println("  2.  Aggiungi tipo di visita a luogo");
@@ -231,8 +231,8 @@ public class MenuConfiguratore {
             System.out.println("  Preclusa: " + d);
         } else {
             LocalDate p = LocalDate.now().plusMonths(1);
-            Set<LocalDate> pr = ctrl.getDatePrecluse(p.getYear(), p.getMonthValue());
             System.out.println("  Mese " + p.getMonthValue() + "/" + p.getYear() + ":");
+            Set<LocalDate> pr = ctrl.getDatePrecluse(p.getYear(), p.getMonthValue());
             if (pr.isEmpty()) System.out.println("  (nessuna)");
             else pr.stream().sorted().forEach(d -> System.out.println("    " + d));
         }

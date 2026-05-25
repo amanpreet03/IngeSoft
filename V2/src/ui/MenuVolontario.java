@@ -6,7 +6,7 @@ import model.*;
 import java.time.LocalDate;
 import java.util.*;
 
-// interfaccia testuale per il volontario (V2+)
+// interfaccia testuale per il volontario 
 public class MenuVolontario {
 
     private final Controller ctrl;
@@ -22,7 +22,9 @@ public class MenuVolontario {
             System.out.println("  Benvenuto, " + v.getNickname() + "!");
             if (v.isPrimoAccesso()) cambioPasswordObbligatorio(v);
             return v;
-        } catch (Exception e) { System.out.println("  Accesso negato: " + e.getMessage()); return null; }
+        } catch (Exception e) { System.out.println("  Accesso negato: " + e.getMessage()); 
+            return null; 
+        }
     }
 
     private void cambioPasswordObbligatorio(Volontario v) {
@@ -40,18 +42,19 @@ public class MenuVolontario {
     public void menu(Volontario v) {
         boolean esci = false;
         while (!esci) {
-            String meseProssimo = ctrl.getMeseRaccolta() + "/" + ctrl.getAnnoRaccolta();
+            LocalDate prossimo = LocalDate.now().plusMonths(1);
+            String NomeMese = prossimo.getMonth().name().toLowerCase(Locale.ITALIAN) +" " + prossimo.getYear();
             System.out.println("\n════════════════════════════════════════");
-            System.out.println("  VOLONTARIO: " + v.getNickname() + "  |  Mese raccolta: " + meseProssimo);
+            System.out.println("  VOLONTARIO: " + v.getNickname() + "  |  Mese raccolta: " + NomeMese);
             System.out.println("  1. I miei tipi di visita");
-            System.out.println("  2. Dichiara disponibilità per " + meseProssimo);
+            System.out.println("  2. Dichiara disponibilità per " + NomeMese);
             System.out.println("  3. Visualizza le mie disponibilità");
             System.out.println("  4. Rimuovi una disponibilità");
             System.out.println("  5. Visite confermate in cui sono guida");
             System.out.println("  0. Esci");
             switch (Console.leggiInt("  Scelta: ", 0, 5)) {
                 case 1 -> mostraTipiVisita(v);
-                case 2 -> dichiaraDisponibilita(v);
+                case 2 -> dichiaraDisponibilita(v, NomeMese);
                 case 3 -> mostraDisponibilita(v);
                 case 4 -> rimuoviDisponibilita(v);
                 case 5 -> mostraVisiteConfermate(v);
@@ -59,7 +62,7 @@ public class MenuVolontario {
             }
         }
     }
-
+// ------ metodi per le funzionalità del menu -------------
     private void mostraTipiVisita(Volontario v) {
         Console.titolo("I MIEI TIPI DI VISITA");
         List<TipoVisita> tipi = ctrl.tipiDelVolontario(v);
@@ -76,7 +79,7 @@ public class MenuVolontario {
         Console.pausa();
     }
 
-    private void dichiaraDisponibilita(Volontario v) {
+    private void dichiaraDisponibilita(Volontario v, String nomeMese) {
         Console.titolo("DICHIARA DISPONIBILITÀ");
         System.out.println("  Inserisci le date in cui sei disponibile (digita 'fine' per terminare).");
         while (true) {

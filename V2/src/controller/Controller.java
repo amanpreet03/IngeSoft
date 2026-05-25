@@ -21,9 +21,7 @@ public class Controller {
         this.sistema = sistema;
     }
 
-    // ================================================================
     // LOGIN / REGISTRAZIONE
-    // ================================================================
 
     public Configuratore loginConfiguratore(String username, String password) {
         Configuratore c = sistema.trovaConfiguratore(username)
@@ -63,9 +61,9 @@ public class Controller {
     }
 
 
-    // =================
+  
     // INIZIALIZZAZIONE 
-    // =================
+    
 
     public void inizializza(String ambito, int maxPersone) {
         sistema.setAmbito(ambito);
@@ -85,9 +83,9 @@ public class Controller {
         Persistenza.salvaAmbito(sistema);
     }
 
-    // ========
+    
     // LUOGHI
-    // ========
+    
 
     /*
      * Crea un Luogo in memoria senza ancora salvarlo.
@@ -122,13 +120,13 @@ public class Controller {
 
     public Collection<Luogo> getLuoghi() { return sistema.getLuoghi(); }
 
-    // ================ TIPI DI VISITA ================
+    // TIPI DI VISITA 
 
     public Collection<TipoVisita> getTipiVisita()     { return sistema.getTipiVisita(); }
 
     public Optional<TipoVisita> trovaTipo(String tag) { return sistema.trovaTipo(tag); }
 
-    // ============== VOLONTARI ==============
+    // VOLONTARI 
 
     public Volontario creaVolontario(String nickname, String password) {
         if (sistema.usernameOccupato(nickname))
@@ -152,16 +150,10 @@ public class Controller {
         return sistema.tipiDelVolontario(v.getNickname());
     }
 
-    // ================= DISPONIBILITÀ =======================
+    // DISPONIBILITÀ 
 
     public void aggiungiDisponibilita(Volontario v, LocalDate data) {
-        if (sistema.getFase() != FaseOperativa.RACCOLTA)
-            throw new IllegalStateException("Non è il momento di dichiarare disponibilità.");
-        if (data.getYear() != sistema.getAnnoRaccolta()
-                || data.getMonthValue() != sistema.getMeseRaccolta())
-            throw new IllegalArgumentException(
-                "Puoi dichiarare disponibilità solo per il mese "
-                + sistema.getMeseRaccolta() + "/" + sistema.getAnnoRaccolta() + ".");
+    
         if (sistema.isPreclusa(data))
             throw new IllegalArgumentException("Il " + data + " è precluso a ogni visita.");
         GiornoSettimana gds = GiornoSettimana.da(data.getDayOfWeek());
@@ -183,13 +175,16 @@ public class Controller {
         return v.getDisponibilita(sistema.getAnnoRaccolta(), sistema.getMeseRaccolta());
     }
 
-    // ===================== DATE PRECLUSE =============================
+    // DATE PRECLUSE 
 
     public void aggiungiDataPreclusa(LocalDate d) {
         sistema.aggiungiDataPreclusa(d);
         Persistenza.salvaPiano(sistema);
     }
-    // ========================== VISITE ====================================
+    public Set<LocalDate> getDatePrecluse(int anno, int mese) {
+        return sistema.getDatePrecluse(anno, mese);
+    }
+    //  VISITE 
 
     public List<Visita> getVisitePerStato(StatoVisita s) {
         return s == StatoVisita.EFFETTUATA

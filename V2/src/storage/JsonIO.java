@@ -14,9 +14,7 @@ public class JsonIO {
 
     private JsonIO() {}
 
-    // ================================================================
     // Lettura
-    // ================================================================
 
     @SuppressWarnings("unchecked")
     public static Map<String, Object> leggi(String percorso) {
@@ -32,9 +30,7 @@ public class JsonIO {
         }
     }
 
-    // ================================================================
     // Scrittura
-    // ================================================================
 
     public static void scrivi(String percorso, Map<String, Object> dati) {
         try {
@@ -46,9 +42,7 @@ public class JsonIO {
         }
     }
 
-    // ================================================================
     // Parser ricorsivo
-    // ================================================================
 
     private static Object parse(String s, int[] p) {
         avanza(s, p);
@@ -137,9 +131,7 @@ public class JsonIO {
         while (p[0] < s.length() && Character.isWhitespace(s.charAt(p[0]))) p[0]++;
     }
 
-    // ================================================================
     // Serializzatore con indentazione
-    // ================================================================
 
     public static String formato(Object o, int lv) {
         if (o == null)     return "null";
@@ -182,9 +174,7 @@ public class JsonIO {
                 .replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t");
     }
 
-    // ================================================================
     // Helpers per accesso sicuro ai valori
-    // ================================================================
 
     @SuppressWarnings("unchecked")
     public static Map<String, Object> oggettoSafe(Object o) {
