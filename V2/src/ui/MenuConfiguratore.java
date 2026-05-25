@@ -170,23 +170,6 @@ public class MenuConfiguratore {
         Console.pausa();
     }
 
-   rivate void rimuoviLuogo(){
-        Console.titolo("RIMUOVI LUOGO");
-        mostraLuoghiBreve();
-        String tagLuogo = Console.leggiStringa("  Tag luogo da rimuovere: ");
-        if (!Console.leggiSiNo("  Sei sicuro di voler rimuovere il luogo " + tagLuogo + "?")) {
-            System.out.println("  Operazione annullata.");
-            Console.pausa();
-            return;
-        }
-        try {
-            ctrl.rimuoviLuogo(tagLuogo);
-            System.out.println("  Luogo rimosso.");
-        } catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
-        Console.pausa();
-    }
-   }
-
    private void rimuoviTipoVisita() {
         Console.titolo("RIMUOVI TIPO DI VISITA");
         mostraLuoghiBreve();
@@ -200,7 +183,7 @@ public class MenuConfiguratore {
                 Console.pausa();
                 return;
             }
-            ctrl.rimuoviTipoVisita(l, tagTipo);
+            l.rimuoviTipoVisita(tagTipo);
             System.out.println("  Tipo di visita rimosso.");
         } catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
         Console.pausa();

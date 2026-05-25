@@ -43,7 +43,7 @@ public class MenuVolontario {
         boolean esci = false;
         while (!esci) {
             LocalDate prossimo = LocalDate.now().plusMonths(1);
-            String meseProssimo = ctrl.getMonth().name().toLowerCase(Locale.ITALIAN) +" " + prossimo.getYear();
+            String meseProssimo = "(" + prossimo.getMonthValue() + "/" + prossimo.getYear() + ")";
             System.out.println("\n════════════════════════════════════════");
             System.out.println("  VOLONTARIO: " + v.getNickname() + meseProssimo);
             System.out.println("  1. I miei tipi di visita");
