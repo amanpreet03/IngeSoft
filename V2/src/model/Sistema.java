@@ -158,7 +158,7 @@ public class Sistema {
         return s != null && s.contains(d);
     }
 
-    public Set<LocalDate> getDatePrecluse(int anno, int mese) {
+    public Set<LocalDate> getDatePrecluse( int anno, int mese) {
         return Collections.unmodifiableSet(
             datePrecluse.getOrDefault(anno + "-" + String.format("%02d", mese),
                 Collections.emptySet()));

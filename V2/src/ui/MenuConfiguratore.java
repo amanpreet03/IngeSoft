@@ -45,7 +45,7 @@ public class MenuConfiguratore {
     }
 
     private void cambioPasswordObbligatorio(Configuratore c) {
-        System.out.println("\n  [Primo accesso – scegli una nuova password]");
+        System.out.println("\n  [Primo accesso  scegli una nuova password]");
         while (true) {
             String p1 = Console.leggiStringa("  Nuova password: ");
             String p2 = Console.leggiStringa("  Conferma: ");
@@ -150,7 +150,7 @@ public class MenuConfiguratore {
         String tagLuogo = Console.leggiStringa("  Tag luogo: ");
         try {
             Luogo l = ctrl.ottieniLuogo(tagLuogo);
-            l.getTipiVisita().forEach(tv -> System.out.println("    – [" + tv.getTag() + "] " + tv.getTitolo()));
+            l.getTipiVisita().forEach(tv -> System.out.println("     [" + tv.getTag() + "] " + tv.getTitolo()));
             String tagTipo = Console.leggiStringa("  Tag tipo di visita: ");
             TipoVisita tv = l.trovaTipo(tagTipo)
                 .orElseThrow(() -> new IllegalArgumentException("Tipo non trovato."));
@@ -174,7 +174,7 @@ public class MenuConfiguratore {
         Console.titolo("LUOGHI VISITABILI");
         if (ctrl.getLuoghi().isEmpty()) { System.out.println("  Nessun luogo."); Console.pausa(); return; }
         for (Luogo l : ctrl.getLuoghi()) {
-            System.out.println("\n  [" + l.getTag() + "] " + l.getNome() + " – " + l.getCollocazione());
+            System.out.println("\n  [" + l.getTag() + "] " + l.getNome() + " " + l.getCollocazione());
             if (l.getDescrizione() != null) System.out.println("  " + l.getDescrizione());
             for (TipoVisita tv : l.getTipiVisita()) {
                 System.out.println("    • [" + tv.getTag() + "] " + tv.getTitolo()

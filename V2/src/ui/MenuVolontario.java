@@ -28,7 +28,7 @@ public class MenuVolontario {
     }
 
     private void cambioPasswordObbligatorio(Volontario v) {
-        System.out.println("\n  [Primo accesso – scegli una nuova password]");
+        System.out.println("\n  [Primo accesso  scegli una nuova password]");
         while (true) {
             String p1 = Console.leggiStringa("  Nuova password: ");
             String p2 = Console.leggiStringa("  Conferma: ");
@@ -45,7 +45,7 @@ public class MenuVolontario {
             LocalDate prossimo = LocalDate.now().plusMonths(1);
             String NomeMese = prossimo.getMonth().name().toLowerCase(Locale.ITALIAN) +" " + prossimo.getYear();
             System.out.println("\n════════════════════════════════════════");
-            System.out.println("  VOLONTARIO: " + v.getNickname() + "  |  Mese raccolta: " + NomeMese);
+            System.out.println("  VOLONTARIO: " + v.getNickname() + NomeMese);
             System.out.println("  1. I miei tipi di visita");
             System.out.println("  2. Dichiara disponibilità per " + NomeMese);
             System.out.println("  3. Visualizza le mie disponibilità");
@@ -54,7 +54,7 @@ public class MenuVolontario {
             System.out.println("  0. Esci");
             switch (Console.leggiInt("  Scelta: ", 0, 5)) {
                 case 1 -> mostraTipiVisita(v);
-                case 2 -> dichiaraDisponibilita(v, NomeMese);
+                case 2 -> dichiaraDisponibilita(v);
                 case 3 -> mostraDisponibilita(v);
                 case 4 -> rimuoviDisponibilita(v);
                 case 5 -> mostraVisiteConfermate(v);
@@ -79,7 +79,7 @@ public class MenuVolontario {
         Console.pausa();
     }
 
-    private void dichiaraDisponibilita(Volontario v, String nomeMese) {
+    private void dichiaraDisponibilita(Volontario v) {
         Console.titolo("DICHIARA DISPONIBILITÀ");
         System.out.println("  Inserisci le date in cui sei disponibile (digita 'fine' per terminare).");
         while (true) {
@@ -102,7 +102,7 @@ public class MenuVolontario {
 
     private void mostraDisponibilita(Volontario v) {
         Console.titolo("LE MIE DISPONIBILITÀ");
-        Set<LocalDate> disp = ctrl.getDisponibilita(v);
+        Set<LocalDate> disp = ctrl.getDisponibilita(v, 0, 0);
         if (disp.isEmpty()) System.out.println("  Nessuna disponibilità dichiarata.");
         else disp.stream().sorted().forEach(d ->
             System.out.println("  ✓ " + d + " (" + GiornoSettimana.da(d.getDayOfWeek()) + ")"));
@@ -123,7 +123,7 @@ public class MenuVolontario {
         if (visite.isEmpty()) { System.out.println("  Nessuna visita confermata."); Console.pausa(); return; }
         for (Visita vis : visite) {
             ctrl.trovaTipo(vis.getTipoTag()).ifPresent(tv -> {
-                System.out.println("\n  📅 " + vis.getData() + " – " + tv.getTitolo());
+                System.out.println("\n  📅 " + vis.getData() + "  " + tv.getTitolo());
                 System.out.println("     Ora: " + tv.getOraInizio()
                     + "  Luogo: " + vis.getLuogoTag());
                 System.out.println("     Incontro: " + tv.getPuntoIncontro());
@@ -132,7 +132,7 @@ public class MenuVolontario {
                     System.out.println("     Prenotazioni:");
                     vis.getIscrizioni().forEach(i ->
                         System.out.println("       " + i.getCodice()
-                            + " – " + i.getNumPersone() + " pers. (" + i.getUsernameFruitore() + ")"));
+                            + "  " + i.getNumPersone() + " pers. (" + i.getUsernameFruitore() + ")"));
                 }
             });
         }
