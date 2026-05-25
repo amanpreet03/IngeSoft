@@ -19,7 +19,7 @@ public class Sistema {
     private String ambitoTerritoriale;    // impostato una sola volta
     private int maxPersonePerIscrizione;
 
-    // fase del ciclo mensile (V3)
+    // fase del ciclo mensile 
     private FaseOperativa fase = FaseOperativa.RACCOLTA;
     private int annoRaccolta;
     private int meseRaccolta;
@@ -54,7 +54,7 @@ public class Sistema {
     public void setMaxPersone(int m)    { this.maxPersonePerIscrizione = m; }
     public int getMaxPersone()          { return maxPersonePerIscrizione; }
 
-    // ---- fase (V3) ----
+    // ---- fase ----
 
     public FaseOperativa getFase()      { return fase; }
     public void setFase(FaseOperativa f){ this.fase = f; }

@@ -12,7 +12,7 @@ import java.util.*;
  * oppure serializza lo stato corrente su disco.
  *
  * Formato date nei JSON: dd-MM-yyyy
- * Formato mesi nei JSON: YYYY-MM  (es. "2025-07")
+ * Formato mesi nei JSON: YYYY-MM  (es. "2026-07")
  */
 public class Persistenza {
 
@@ -21,9 +21,7 @@ public class Persistenza {
 
     private Persistenza() {}
 
-    // ================================================================
     // Caricamento all'avvio
-    // ================================================================
 
     public static void caricaTutto(Sistema s) {
         caricaAmbito(s);
@@ -206,9 +204,7 @@ public class Persistenza {
         }
     }
 
-    // ================================================================
     // Salvataggio
-    // ================================================================
 
     public static void salvaAmbito(Sistema s) {
         Map<String, Object> root = JsonIO.nuovaMappa();
