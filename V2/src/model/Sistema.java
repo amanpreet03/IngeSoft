@@ -19,16 +19,11 @@ public class Sistema {
     private String ambitoTerritoriale;    // impostato una sola volta
     private int maxPersonePerIscrizione;
 
-    // fase del ciclo mensile (V3)
-    private FaseOperativa fase = FaseOperativa.RACCOLTA;
-    private int annoRaccolta;
-    private int meseRaccolta;
-
     private final Map<String, Luogo>          luoghi         = new LinkedHashMap<>();
     private final Map<String, TipoVisita>     tipiVisita     = new LinkedHashMap<>();
     private final Map<String, Configuratore>  configuratori  = new LinkedHashMap<>();
     private final Map<String, Volontario>     volontari      = new LinkedHashMap<>();
-    private final Map<String, Fruitore>       fruitori       = new LinkedHashMap<>();
+
 
     // visite correnti (proposte / complete / confermate / cancellate)
     private final List<Visita> visite   = new ArrayList<>();
@@ -54,14 +49,6 @@ public class Sistema {
 
     public void setMaxPersone(int m)    { this.maxPersonePerIscrizione = m; }
     public int getMaxPersone()          { return maxPersonePerIscrizione; }
-
-    // ---- fase (V3) ----
-
-    public FaseOperativa getFase()      { return fase; }
-    public void setFase(FaseOperativa f){ this.fase = f; }
-    public int getAnnoRaccolta()        { return annoRaccolta; }
-    public int getMeseRaccolta()        { return meseRaccolta; }
-    public void setMeseRaccolta(int a, int m){ this.annoRaccolta = a; this.meseRaccolta = m; }
 
     // ---- luoghi ----
 
@@ -121,22 +108,6 @@ public class Sistema {
 
     public Collection<Volontario> getVolontari() {
         return Collections.unmodifiableCollection(volontari.values());
-    }
-
-    // ---- fruitori (V4) ----
-
-    public void aggiungiFruitore(Fruitore f) {
-        if (usernameOccupato(f.getUsername()))
-            throw new IllegalArgumentException("Username già in uso: " + f.getUsername());
-        fruitori.put(f.getUsername(), f);
-    }
-
-    public Optional<Fruitore> trovaFruitore(String u) {
-        return Optional.ofNullable(fruitori.get(u));
-    }
-
-    public Collection<Fruitore> getFruitori() {
-        return Collections.unmodifiableCollection(fruitori.values());
     }
 
     // ---- visite ----
@@ -201,8 +172,7 @@ public class Sistema {
 
     public boolean usernameOccupato(String u) {
         return configuratori.containsKey(u)
-            || volontari.containsKey(u)
-            || fruitori.containsKey(u);
+            || volontari.containsKey(u);
     }
 
     // usato dalla persistenza per caricare lo storico

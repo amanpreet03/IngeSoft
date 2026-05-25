@@ -1,0 +1,8 @@
+{
+  "primo_avvio": false,
+  "admin": {
+    "tipo": 1,
+    "password-hash": "c63bc483",
+    "primo-accesso": true
+  }
+}

@@ -80,38 +80,25 @@ public class MenuConfiguratore {
             System.out.println("  2.  Aggiungi tipo di visita a luogo");
             System.out.println("  3.  Aggiungi volontario a tipo di visita");
             System.out.println("  4.  Inserisci nuovo volontario");
-            System.out.println("  5.  Rimuovi luogo  [V3]");
-            System.out.println("  6.  Rimuovi tipo di visita  [V3]");
-            System.out.println("  7.  Rimuovi volontario  [V3]");
-            System.out.println("  ─── Ciclo mensile [V3] ─────────────────");
-            System.out.println("  8.  Chiudi raccolta disponibilità");
-            System.out.println("  9.  Genera piano visite");
-            System.out.println("  10. Apri nuova raccolta");
             System.out.println("  ─── Visualizza ─────────────────────────");
-            System.out.println("  11. Luoghi visitabili");
-            System.out.println("  12. Volontari");
-            System.out.println("  13. Visite");
-            System.out.println("  14. Date precluse");
-            System.out.println("  15. Modifica max persone per iscrizione");
+            System.out.println("  5. Luoghi visitabili");
+            System.out.println("  6. Volontari");
+            System.out.println("  7. Visite");
+            System.out.println("  8. Date precluse");
+            System.out.println("  9. Modifica max persone per iscrizione");
             System.out.println("  0.  Esci");
-            int s = Console.leggiInt("  Scelta: ", 0, 15);
+            int s = Console.leggiInt("  Scelta: ", 0, 9);
             switch (s) {
-                case 1  -> aggiungiLuogo();
-                case 2  -> aggiungiTipoVisita();
-                case 3  -> aggiungiVolontarioATipo();
-                case 4  -> inserisciVolontario();
-                case 5  -> rimuoviLuogo();
-                case 6  -> rimuoviTipoVisita();
-                case 7  -> rimuoviVolontario();
-                case 8  -> chiudiRaccolta();
-                case 9  -> generaPiano();
-                case 10 -> apriRaccolta();
-                case 11 -> mostraLuoghi();
-                case 12 -> mostraVolontari();
-                case 13 -> mostraVisite();
-                case 14 -> gestionePrecluse();
-                case 15 -> modificaMaxPersone();
-                case 0  -> esci = true;
+                case 1 -> aggiungiLuogo();
+                case 2 -> aggiungiTipoVisita();
+                case 3 -> aggiungiVolontarioATipo();
+                case 4 -> inserisciVolontario();
+                case 5 -> mostraLuoghi();
+                case 6 -> mostraVolontari();
+                case 7 -> mostraVisite();
+                case 8 -> gestionePrecluse();
+                case 9 -> modificaMaxPersone();
+                default -> esci = true;
             }
         }
     }
@@ -183,72 +170,6 @@ public class MenuConfiguratore {
             ctrl.creaVolontario(Console.leggiStringa("  Nickname: "),
                                 Console.leggiStringa("  Password iniziale: "));
             System.out.println("  Volontario aggiunto.");
-        } catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
-        Console.pausa();
-    }
-
-    private void rimuoviLuogo() {
-        Console.titolo("RIMUOVI LUOGO");
-        mostraLuoghiBreve();
-        String tag = Console.leggiStringa("  Tag luogo da rimuovere: ");
-        if (!Console.leggiSiNo("  Sicuro? Verranno rimossi anche i tipi di visita associati"))
-            { System.out.println("  Annullato."); Console.pausa(); return; }
-        try { ctrl.rimuoviLuogo(tag); System.out.println("  Luogo rimosso (cascata applicata)."); }
-        catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
-        Console.pausa();
-    }
-
-    private void rimuoviTipoVisita() {
-        Console.titolo("RIMUOVI TIPO DI VISITA");
-        mostraLuoghiBreve();
-        String tagLuogo = Console.leggiStringa("  Tag luogo: ");
-        try {
-            ctrl.ottieniLuogo(tagLuogo).getTipiVisita()
-                .forEach(tv -> System.out.println("    – [" + tv.getTag() + "] " + tv.getTitolo()));
-            String tagTipo = Console.leggiStringa("  Tag tipo da rimuovere: ");
-            if (!Console.leggiSiNo("  Confermi?"))
-                { System.out.println("  Annullato."); Console.pausa(); return; }
-            ctrl.rimuoviTipoVisita(tagLuogo, tagTipo);
-            System.out.println("  Tipo rimosso (cascata applicata).");
-        } catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
-        Console.pausa();
-    }
-
-    private void rimuoviVolontario() {
-        Console.titolo("RIMUOVI VOLONTARIO");
-        ctrl.getVolontari().forEach(v -> System.out.println("    – " + v.getNickname()));
-        String nick = Console.leggiStringa("  Nickname da rimuovere: ");
-        if (!Console.leggiSiNo("  Sicuro? Possono venir rimossi anche tipi/luoghi collegati"))
-            { System.out.println("  Annullato."); Console.pausa(); return; }
-        try { ctrl.rimuoviVolontario(nick); System.out.println("  Volontario rimosso (cascata applicata)."); }
-        catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
-        Console.pausa();
-    }
-
-    private void chiudiRaccolta() {
-        Console.titolo("CHIUDI RACCOLTA DISPONIBILITÀ");
-        try { ctrl.chiudiRaccolta(); System.out.println("  Raccolta chiusa."); }
-        catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
-        Console.pausa();
-    }
-
-    private void generaPiano() {
-        Console.titolo("GENERA PIANO VISITE");
-        try {
-            List<Visita> nuove = ctrl.generaPiano();
-            System.out.println("  Piano generato: " + nuove.size() + " visite proposte.");
-            nuove.forEach(v -> System.out.println(
-                "    " + v.getData() + " – [" + v.getTipoTag() + "] guida: " + v.getGuidaNickname()));
-        } catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
-        Console.pausa();
-    }
-
-    private void apriRaccolta() {
-        Console.titolo("APRI NUOVA RACCOLTA");
-        try {
-            ctrl.apriNuovaRaccolta();
-            System.out.println("  Raccolta aperta per il mese "
-                + ctrl.getMeseRaccolta() + "/" + ctrl.getAnnoRaccolta() + ".");
         } catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
         Console.pausa();
     }
@@ -346,16 +267,17 @@ public class MenuConfiguratore {
         boolean big = Console.leggiSiNo("  Biglietto richiesto?");
         int minP = Console.leggiInt("  Min partecipanti: ", 1);
         int maxP = Console.leggiInt("  Max partecipanti (>= " + minP + "): ", minP);
-        return TipoVisita.builder(tag, tit, luogoTag)
-            .descrizione(descr)
-            .puntoIncontro(punto)
-            .periodo(di, df)
-            .giorni(giorni)
-            .oraInizio(ora)
-            .durata(dur)
-            .bigliettoRichiesto(big)
-            .partecipanti(minP, maxP)
-            .build();
+        // use explicit builder variable to avoid inference to Object
+        TipoVisita.Builder b = (TipoVisita.Builder) TipoVisita.builder(tag, tit, luogoTag);
+        b.descrizione(descr);
+        b.puntoIncontro(punto);
+        b.periodo(di, df);
+        b.giorni(giorni);
+        b.oraInizio(ora);
+        b.durata(dur);
+        b.bigliettoRichiesto(big);
+        b.partecipanti(minP, maxP);
+        return b.build();
     }
 
     void raccogliVolontariPerTipo(TipoVisita tv) {

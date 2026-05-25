@@ -266,13 +266,6 @@ public class Persistenza {
             ud.put("primo-accesso", v.isPrimoAccesso());
             root.put(v.getNickname(), ud);
         }
-        for (Fruitore f : s.getFruitori()) {
-            Map<String, Object> ud = JsonIO.nuovaMappa();
-            ud.put("tipo",          3L);
-            ud.put("password-hash", f.getPasswordHash());
-            ud.put("primo-accesso", false);
-            root.put(f.getUsername(), ud);
-        }
         JsonIO.scrivi(Percorsi.UTENTI, root);
     }
 
