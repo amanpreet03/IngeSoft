@@ -170,6 +170,42 @@ public class MenuConfiguratore {
         Console.pausa();
     }
 
+   rivate void rimuoviLuogo(){
+        Console.titolo("RIMUOVI LUOGO");
+        mostraLuoghiBreve();
+        String tagLuogo = Console.leggiStringa("  Tag luogo da rimuovere: ");
+        if (!Console.leggiSiNo("  Sei sicuro di voler rimuovere il luogo " + tagLuogo + "?")) {
+            System.out.println("  Operazione annullata.");
+            Console.pausa();
+            return;
+        }
+        try {
+            ctrl.rimuoviLuogo(tagLuogo);
+            System.out.println("  Luogo rimosso.");
+        } catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
+        Console.pausa();
+    }
+   }
+
+   private void rimuoviTipoVisita() {
+        Console.titolo("RIMUOVI TIPO DI VISITA");
+        mostraLuoghiBreve();
+        String tagLuogo = Console.leggiStringa("  Tag luogo: ");
+        try {
+            Luogo l = ctrl.ottieniLuogo(tagLuogo);
+            l.getTipiVisita().forEach(tv -> System.out.println("     [" + tv.getTag() + "] " + tv.getTitolo()));
+            String tagTipo = Console.leggiStringa("  Tag tipo di visita da rimuovere: ");
+            if (!Console.leggiSiNo("  Sei sicuro di voler rimuovere il tipo di visita " + tagTipo + "?")) {
+                System.out.println("  Operazione annullata.");
+                Console.pausa();
+                return;
+            }
+            ctrl.rimuoviTipoVisita(l, tagTipo);
+            System.out.println("  Tipo di visita rimosso.");
+        } catch (Exception e) { System.out.println("  Errore: " + e.getMessage()); }
+        Console.pausa();
+    }
+
     private void mostraLuoghi() {
         Console.titolo("LUOGHI VISITABILI");
         if (ctrl.getLuoghi().isEmpty()) { System.out.println("  Nessun luogo."); Console.pausa(); return; }
@@ -231,8 +267,8 @@ public class MenuConfiguratore {
             System.out.println("  Preclusa: " + d);
         } else {
             LocalDate p = LocalDate.now().plusMonths(1);
-            System.out.println("  Mese " + p.getMonthValue() + "/" + p.getYear() + ":");
             Set<LocalDate> pr = ctrl.getDatePrecluse(p.getYear(), p.getMonthValue());
+            System.out.println("  Mese " + p.getMonthValue() + "/" + p.getYear() + ":");
             if (pr.isEmpty()) System.out.println("  (nessuna)");
             else pr.stream().sorted().forEach(d -> System.out.println("    " + d));
         }

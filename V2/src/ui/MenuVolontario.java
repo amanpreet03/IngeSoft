@@ -43,11 +43,11 @@ public class MenuVolontario {
         boolean esci = false;
         while (!esci) {
             LocalDate prossimo = LocalDate.now().plusMonths(1);
-            String NomeMese = prossimo.getMonth().name().toLowerCase(Locale.ITALIAN) +" " + prossimo.getYear();
+            String meseProssimo = ctrl.getMonth().name().toLowerCase(Locale.ITALIAN) +" " + prossimo.getYear();
             System.out.println("\n════════════════════════════════════════");
-            System.out.println("  VOLONTARIO: " + v.getNickname() + NomeMese);
+            System.out.println("  VOLONTARIO: " + v.getNickname() + meseProssimo);
             System.out.println("  1. I miei tipi di visita");
-            System.out.println("  2. Dichiara disponibilità per " + NomeMese);
+            System.out.println("  2. Dichiara disponibilità per " + meseProssimo);
             System.out.println("  3. Visualizza le mie disponibilità");
             System.out.println("  4. Rimuovi una disponibilità");
             System.out.println("  5. Visite confermate in cui sono guida");
