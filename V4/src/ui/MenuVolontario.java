@@ -6,7 +6,7 @@ import model.*;
 import java.time.LocalDate;
 import java.util.*;
 
-// interfaccia testuale per il volontario (V2+)
+// interfaccia testuale per il volontario
 public class MenuVolontario {
 
     private final Controller ctrl;

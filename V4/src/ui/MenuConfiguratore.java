@@ -6,7 +6,7 @@ import model.*;
 import java.time.*;
 import java.util.*;
 
-// interfaccia testuale per il configuratore (V1 + estensioni V2, V3)
+// interfaccia testuale per il configuratore 
 public class MenuConfiguratore {
 
     private final Controller ctrl;

@@ -21,9 +21,9 @@ public class Controller {
         this.sistema = sistema;
     }
 
-    // ================================================================
+    // 
     // LOGIN / REGISTRAZIONE
-    // ================================================================
+    // 
 
     public Configuratore loginConfiguratore(String username, String password) {
         Configuratore c = sistema.trovaConfiguratore(username)
@@ -77,9 +77,8 @@ public class Controller {
         Persistenza.salvaUtenti(sistema);
     }
 
-    // ================================================================
-    // INIZIALIZZAZIONE (V1)
-    // ================================================================
+    
+    // INIZIALIZZAZIONE 
 
     public void inizializza(String ambito, int maxPersone) {
         sistema.setAmbito(ambito);
@@ -99,9 +98,9 @@ public class Controller {
         Persistenza.salvaAmbito(sistema);
     }
 
-    // ================================================================
-    // LUOGHI (V1)
-    // ================================================================
+    
+    // LUOGHI 
+    
 
     /*
      * Crea un Luogo in memoria senza ancora salvarlo.
@@ -136,18 +135,17 @@ public class Controller {
 
     public Collection<Luogo> getLuoghi() { return sistema.getLuoghi(); }
 
-    // ================================================================
-    // TIPI DI VISITA (V1)
-    // ================================================================
+    
+    // TIPI DI VISITA 
+    
 
     public Collection<TipoVisita> getTipiVisita()     { return sistema.getTipiVisita(); }
 
     public Optional<TipoVisita> trovaTipo(String tag) { return sistema.trovaTipo(tag); }
 
-    // ================================================================
-    // VOLONTARI (V1)
-    // ================================================================
-
+    
+    // VOLONTARI 
+    
     public Volontario creaVolontario(String nickname, String password) {
         if (sistema.usernameOccupato(nickname))
             throw new IllegalArgumentException("Nickname già in uso: " + nickname);
@@ -170,9 +168,9 @@ public class Controller {
         return sistema.tipiDelVolontario(v.getNickname());
     }
 
-    // ================================================================
-    // RIMOZIONI CON CASCATA (V3)
-    // ================================================================
+    
+    // RIMOZIONI CON CASCATA 
+    
 
     private void verificaFasePiano() {
         if (sistema.getFase() != FaseOperativa.PIANO)
@@ -257,9 +255,9 @@ public class Controller {
         daRimuovere.forEach(sistema::rimuoviLuogo);
     }
 
-    // ================================================================
-    // CICLO MENSILE (V3)
-    // ================================================================
+    
+    // CICLO MENSILE 
+    
 
     public FaseOperativa getFase()        { return sistema.getFase(); }
     public int getAnnoRaccolta()          { return sistema.getAnnoRaccolta(); }
@@ -303,9 +301,9 @@ public class Controller {
         Persistenza.salvaPiano(sistema);
     }
 
-    // ================================================================
-    // DISPONIBILITÀ (V2)
-    // ================================================================
+    
+    // DISPONIBILITÀ 
+    
 
     public void aggiungiDisponibilita(Volontario v, LocalDate data) {
         if (sistema.getFase() != FaseOperativa.RACCOLTA)
@@ -336,9 +334,9 @@ public class Controller {
         return v.getDisponibilita(sistema.getAnnoRaccolta(), sistema.getMeseRaccolta());
     }
 
-    // ================================================================
-    // DATE PRECLUSE (V1/V3)
-    // ================================================================
+    
+    // DATE PRECLUSE 
+    
 
     public void aggiungiDataPreclusa(LocalDate d) {
         sistema.aggiungiDataPreclusa(d);
@@ -349,9 +347,9 @@ public class Controller {
         return sistema.getDatePrecluse(anno, mese);
     }
 
-    // ================================================================
-    // VISITE (V1-V4)
-    // ================================================================
+    
+    // VISITE 
+    
 
     public List<Visita> getVisitePerStato(StatoVisita s) {
         return s == StatoVisita.EFFETTUATA
@@ -390,9 +388,9 @@ public class Controller {
             .collect(Collectors.toList());
     }
 
-    // ================================================================
-    // ISCRIZIONI FRUITORE (V4)
-    // ================================================================
+    
+    // ISCRIZIONI FRUITORE 
+    
 
     public String iscriviAVisita(Fruitore f, Visita visita, int persone) {
         int maxConsentito = sistema.getMaxPersone();

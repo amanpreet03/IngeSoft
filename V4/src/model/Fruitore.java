@@ -1,6 +1,6 @@
 package model;
 
-// utente che si iscrive alle visite guidate (V4)
+// utente che si iscrive alle visite guidate 
 public class Fruitore {
 
     private final String username;

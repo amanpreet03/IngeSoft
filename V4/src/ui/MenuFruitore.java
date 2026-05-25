@@ -5,7 +5,7 @@ import model.*;
 
 import java.util.List;
 
-// interfaccia testuale per il fruitore (V4)
+// interfaccia testuale per il fruitore
 public class MenuFruitore {
 
     private final Controller ctrl;

@@ -15,8 +15,8 @@ public class TipoVisita {
     private final String tag;         // identificatore unico (es. "camera_sposi")
     private final String titolo;
     private final String luogoTag;    // tag del luogo a cui appartiene
-    private final String descrizione;
-    private final String puntoIncontro;
+    private final String descrizione; // opzionale, può essere vuota
+    private final String puntoIncontro; // es. "ingresso principale", "piazza erbe", ecc.
     private final MonthDay inizioPeriodo;
     private final MonthDay finePeriodo;
     private final Set<GiornoSettimana> giorni;

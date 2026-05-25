@@ -1,6 +1,6 @@
 package model;
 
-// fase corrente del ciclo mensile dell'applicazione (V3)
+// fase corrente del ciclo mensile dell'applicazione 
 public enum FaseOperativa {
     RACCOLTA,    // i volontari dichiarano disponibilità
     CHIUSURA,    // raccolta chiusa, si attende la pianificazione

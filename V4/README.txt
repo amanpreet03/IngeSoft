@@ -1,6 +1,6 @@
-====================================================
+
   VISITE GUIDATE MANTOVA  –  Versione 4
-====================================================
+
 
 STRUTTURA CARTELLE
   src/
@@ -41,4 +41,4 @@ NOTE
   - I file JSON vengono aggiornati automaticamente dopo ogni operazione.
   - Il salvataggio è immediato: non serve un comando esplicito.
   - Se un file JSON è assente, viene ricreato vuoto al primo avvio.
-====================================================
+

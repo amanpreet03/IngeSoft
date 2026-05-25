@@ -12,8 +12,8 @@ public class Luogo {
 
     private final String tag;         // es. "palazzo_ducale"
     private final String nome;
-    private final String descrizione; // opzionale
-    private final String collocazione;
+    private final String descrizione; // opzionale, può essere vuota
+    private final String collocazione; // indirizzo o indicazione geografica
     private final List<TipoVisita> tipiVisita = new ArrayList<>();
 
     public Luogo(String tag, String nome, String descrizione, String collocazione) {

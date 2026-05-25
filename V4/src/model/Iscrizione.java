@@ -2,7 +2,7 @@ package model;
 
 import java.util.UUID;
 
-// prenotazione di un fruitore a una visita proposta (V4)
+// prenotazione di un fruitore a una visita proposta
 public class Iscrizione {
 
     private final String codice;
