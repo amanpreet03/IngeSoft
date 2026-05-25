@@ -3,7 +3,7 @@
   "conf1": {
     "tipo": 1,
     "password-hash": "admin",
-    "primo-accesso": false
+    "primo-accesso": true
   },
   "conf2": {
     "tipo": 1,
