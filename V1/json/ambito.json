@@ -1,0 +1,83 @@
+{
+  "nome": "Mantova",
+  "max-prenotazione": 30,
+  "luoghi": {
+    "palazzo_ducale": {
+      "nome": "Palazzo Ducale di Mantova",
+      "descrizione": "La Reggia dei Gonzaga, uno dei più grandi complessi architettonici medievali e rinascimentali d'Europa. Ospita la Camera degli Sposi affrescata da Andrea Mantegna.",
+      "collocazione": "Piazza Sordello 40, Mantova"
+    },
+    "palazzo_te": {
+      "nome": "Palazzo Te",
+      "descrizione": "Capolavoro del manierismo progettato da Giulio Romano tra il 1524 e il 1534. La Sala dei Giganti è uno degli affreschi più spettacolari del Rinascimento.",
+      "collocazione": "Viale Te 13, Mantova"
+    },
+    "basilica_andrea": {
+      "nome": "Basilica di Sant'Andrea",
+      "descrizione": "Gioiello del Rinascimento progettato da Leon Battista Alberti nel 1472. Custodisce le reliquie del Preziosissimo Sangue e la tomba di Andrea Mantegna.",
+      "collocazione": "Piazza Mantegna 6, Mantova"
+    }
+  },
+  "tipi-visita": {
+    "camera_sposi": {
+      "luogo": "palazzo_ducale",
+      "titolo": "La Camera degli Sposi di Mantegna",
+      "descrizione": "Visita guidata al capolavoro assoluto di Andrea Mantegna realizzato per Ludovico Gonzaga. La guida illustra i cicli pittorici e il rivoluzionario uso della prospettiva.",
+      "punto-incontro": "Biglietteria del Palazzo Ducale, Piazza Sordello 40",
+      "data-inizio": "01-03",
+      "data-fine": "30-11",
+      "giorni": ["sab", "dom"],
+      "ora-inizio": "10:00",
+      "durata": 90,
+      "biglietto": true,
+      "min-partecipanti": 5,
+      "max-partecipanti": 25,
+      "volontari": ["volontario1", "volontario2"]
+    },
+    "appartamenti_gonzaga": {
+      "luogo": "palazzo_ducale",
+      "titolo": "Gli Appartamenti dei Gonzaga",
+      "descrizione": "Percorso attraverso i sontuosi appartamenti della Reggia: dal Cortile della Cavallerizza alle sale affrescate da Pisanello, passando per la Galleria dei Mesi.",
+      "punto-incontro": "Biglietteria del Palazzo Ducale, Piazza Sordello 40",
+      "data-inizio": "01-03",
+      "data-fine": "30-11",
+      "giorni": ["sab", "dom"],
+      "ora-inizio": "15:00",
+      "durata": 75,
+      "biglietto": true,
+      "min-partecipanti": 5,
+      "max-partecipanti": 20,
+      "volontari": ["volontario1"]
+    },
+    "sala_giganti": {
+      "luogo": "palazzo_te",
+      "titolo": "La Sala dei Giganti di Giulio Romano",
+      "descrizione": "Ambiente completamente affrescato in cui Giulio Romano simulò il crollo del monte Olimpo sui Giganti ribelli. La guida spiega il programma iconografico e la tecnica pittorica.",
+      "punto-incontro": "Ingresso di Palazzo Te, Viale Te 13",
+      "data-inizio": "01-04",
+      "data-fine": "31-10",
+      "giorni": ["mer", "gio", "ven"],
+      "ora-inizio": "10:30",
+      "durata": 60,
+      "biglietto": true,
+      "min-partecipanti": 4,
+      "max-partecipanti": 30,
+      "volontari": ["volontario2", "volontario3"]
+    },
+    "visita_basilica": {
+      "luogo": "basilica_andrea",
+      "titolo": "Sant'Andrea e la Tomba di Mantegna",
+      "descrizione": "Visita guidata alla Basilica di Sant'Andrea: interno con cappelle gentilizie, cripta con le reliquie e la cappella funeraria di Mantegna con il suo autoritratto bronzeo.",
+      "punto-incontro": "Scalinata esterna della Basilica, Piazza Mantegna",
+      "data-inizio": "01-01",
+      "data-fine": "31-12",
+      "giorni": ["ven", "sab"],
+      "ora-inizio": "11:00",
+      "durata": 60,
+      "biglietto": false,
+      "min-partecipanti": 3,
+      "max-partecipanti": 20,
+      "volontari": ["volontario3", "volontario1"]
+    }
+  }
+}

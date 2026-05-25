@@ -1,0 +1,38 @@
+{
+  "AX12MN01": {
+    "username": "fruitore1",
+    "giorno": "05-07-2026",
+    "tipo": "camera_sposi",
+    "persone": 3
+  },
+  "BK93PP22": {
+    "username": "fruitore1",
+    "giorno": "05-07-2026",
+    "tipo": "camera_sposi",
+    "persone": 5
+  },
+  "CZ45QQ33": {
+    "username": "fruitore2",
+    "giorno": "06-07-2026",
+    "tipo": "visita_basilica",
+    "persone": 3
+  },
+  "DW78RR44": {
+    "username": "fruitore3",
+    "giorno": "12-07-2026",
+    "tipo": "camera_sposi",
+    "persone": 8
+  },
+  "EV56SS55": {
+    "username": "fruitore2",
+    "giorno": "12-07-2026",
+    "tipo": "camera_sposi",
+    "persone": 10
+  },
+  "FU34TT66": {
+    "username": "fruitore3",
+    "giorno": "12-07-2026",
+    "tipo": "camera_sposi",
+    "persone": 7
+  }
+}

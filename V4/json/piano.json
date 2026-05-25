@@ -1,0 +1,53 @@
+{
+  "fase": "raccolta",
+  "anno-raccolta": 2026,
+  "mese-raccolta": 8,
+  "date-precluse": ["15-08-2026"],
+  "disponibilita": {
+    "volontario1": ["09-08-2026", "02-08-2026", "16-08-2026"],
+    "volontario2": ["13-08-2026", "20-08-2026", "02-08-2026"],
+    "volontario3": ["08-08-2026", "22-08-2026", "01-08-2026"]
+  },
+  "visite": {
+    "05-07-2026|camera_sposi": {
+      "stato": "confermata",
+      "guida": "volontario1"
+    },
+    "06-07-2026|visita_basilica": {
+      "stato": "proposta",
+      "guida": "volontario1"
+    },
+    "12-07-2026|camera_sposi": {
+      "stato": "completa",
+      "guida": "volontario2"
+    },
+    "13-07-2026|appartamenti_gonzaga": {
+      "stato": "proposta",
+      "guida": "volontario1"
+    },
+    "09-07-2026|sala_giganti": {
+      "stato": "cancellata",
+      "guida": "volontario2"
+    },
+    "11-07-2026|visita_basilica": {
+      "stato": "proposta",
+      "guida": "volontario3"
+    },
+    "16-07-2026|sala_giganti": {
+      "stato": "proposta",
+      "guida": "volontario3"
+    },
+    "18-07-2026|visita_basilica": {
+      "stato": "proposta",
+      "guida": "volontario1"
+    },
+    "19-07-2026|camera_sposi": {
+      "stato": "proposta",
+      "guida": "volontario2"
+    },
+    "20-07-2026|appartamenti_gonzaga": {
+      "stato": "proposta",
+      "guida": "volontario1"
+    }
+  }
+}

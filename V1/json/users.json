@@ -1,0 +1,43 @@
+{
+  "primo_avvio": false,
+  "conf1": {
+    "tipo": 1,
+    "password-hash": "admin",
+    "primo-accesso": false
+  },
+  "conf2": {
+    "tipo": 1,
+    "password-hash": "admin",
+    "primo-accesso": true
+  },
+  "volontario1": {
+    "tipo": 2,
+    "password-hash": "passwordv1",
+    "primo-accesso": false
+  },
+  "volontario2": {
+    "tipo": 2,
+    "password-hash": "passwordv2",
+    "primo-accesso": false
+  },
+  "volontario3": {
+    "tipo": 2,
+    "password-hash": "passwordv3",
+    "primo-accesso": false
+  },
+  "fruitore1": {
+    "tipo": 3,
+    "password-hash": "passwordf1",
+    "primo-accesso": false
+  },
+  "fruitore2": {
+    "tipo": 3,
+    "password-hash": "passwordf2",
+    "primo-accesso": false
+  },
+  "fruitore3": {
+    "tipo": 3,
+    "password-hash": "passwordf3",
+    "primo-accesso": false
+  }
+}
