@@ -1,0 +1,65 @@
+{
+  "camera_sposi": {
+    "titolo": "La Camera degli Sposi di Mantegna",
+    "descrizione": "Visita guidata alla celebre Camera degli Sposi, capolavoro assoluto di Andrea Mantegna realizzato per Ludovico Gonzaga. La guida illustrerà i cicli pittorici, il rivoluzionario uso della prospettiva e i ritratti della corte gonzaghesca che animano le pareti e il soffitto.",
+    "luogo": "palazzo_ducale",
+    "punto-incontro": "Biglietteria del Palazzo Ducale, Piazza Sordello 40",
+    "ora-inizio": "10:00",
+    "durata-visita": 90,
+    "giorni-prenotabili": ["sab", "dom"],
+    "data-inizio": "01-03-2026",
+    "data-fine": "30-11-2026",
+    "da-acquistare": true,
+    "min-fruitore": 5,
+    "max-fruitore": 25,
+    "volontari": ["volontario1", "volontario2"]
+  },
+ 
+  "appartamenti_gonzaga": {
+    "titolo": "Gli Appartamenti dei Gonzaga",
+    "descrizione": "Percorso attraverso i sontuosi appartamenti della Reggia dei Gonzaga: dal Cortile della Cavallerizza alle sale affrescate da Pisanello, passando per la Galleria dei Mesi.\nUn viaggio nella vita quotidiana e nel potere della più importante dinastia rinascimentale del Nord Italia.",
+    "luogo": "palazzo_ducale",
+    "punto-incontro": "Biglietteria del Palazzo Ducale, Piazza Sordello 40",
+    "ora-inizio": "15:00",
+    "durata-visita": 75,
+    "giorni-prenotabili": ["sab", "dom"],
+    "data-inizio": "01-03-2026",
+    "data-fine": "30-11-2026",
+    "da-acquistare": true,
+    "min-fruitore": 5,
+    "max-fruitore": 20,
+    "volontari": ["volontario1"]
+  },
+  
+  "sala_giganti": {
+    "titolo": "La Sala dei Giganti di Giulio Romano",
+    "descrizione": "Visita guidata a Palazzo Te con focus sulla straordinaria Sala dei Giganti: un ambiente completamente affrescato in cui Giulio Romano simulò il crollo del monte Olimpo sui Giganti ribelli. La guida spiegherà il programma iconografico, la tecnica pittorica e il contesto storico della committenza gonzaghesca.",
+    "luogo": "palazzo_te",
+    "punto-incontro": "Ingresso di Palazzo Te, Viale Te 13",
+    "ora-inizio": "10:30",
+    "durata-visita": 60,
+    "giorni-prenotabili": ["mer", "gio", "ven"],
+    "data-inizio": "01-04-2026",
+    "data-fine": "31-10-2026",
+    "da-acquistare": true,
+    "min-fruitore": 4,
+    "max-fruitore": 30,
+    "volontari": ["volontario2", "volontario3"]
+  },
+  
+  "visita_basilica": {
+    "titolo": "La Basilica di Sant'Andrea e la Tomba di Mantegna",
+    "descrizione": "Visita guidata alla Basilica di Sant'Andrea, gioiello del Rinascimento albertiano. Il percorso comprende l'interno della basilica con le cappelle gentilizie, la cripta con le reliquie del Preziosissimo Sangue e la cappella funeraria di Andrea Mantegna, decorata con un autoritratto bronzeo del pittore.",
+    "luogo": "basilica_andrea",
+    "punto-incontro": "Scalinata esterna della Basilica, Piazza Mantegna",
+    "ora-inizio": "11:00",
+    "durata-visita": 60,
+    "giorni-prenotabili": ["ven", "sab"],
+    "data-inizio": "01-01-2026",
+    "data-fine": "31-12-2026",
+    "da-acquistare": false,
+    "min-fruitore": 3,
+    "max-fruitore": 20,
+    "volontari": ["volontario3", "volontario1"]
+  }
+}
