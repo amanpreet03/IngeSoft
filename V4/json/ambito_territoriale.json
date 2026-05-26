@@ -1,0 +1,30 @@
+{
+  "nome": "Mantova",
+  "max_prenotazione": 30,
+  "prima_configurazione": false,
+ 
+  "luoghi": {
+              "palazzo_ducale": {
+                                  "nome": "Palazzo Ducale di Mantova",
+                                  "descrizione": " Il Palazzo Ducale di Mantova è una vasta città-alazzo di oltre 35.000 mq, residenza principale dei Gonzaga dal 1328 al 1707. Situato in Piazza Sordello, conta oltre 1.000 ambienti, tra cui la famosa Camera degli Sposi di Mantegna, il ciclo del Pisanello e giardini pensili, rappresentando uno dei complessi rinascimentali più estesi d'Europa",
+                                  "collocazione": "Piazza Sordello 40, Mantova",
+                                  "tipo-visita": [ "camera_sposi", "appartamenti_gonzaga"]
+              },
+    
+              "palazzo_te": {
+      
+                "nome": "Palazzo Te",
+                "descrizione": "Capolavoro del manierismo italiano progettato da Giulio Romano tra il 1524 e il 1534. Celebre per la Sala dei Giganti, dove l'affresco avvolge completamente lo spettatore simulando il crollo dell'Olimpo.",
+                "collocazione": "Viale Te 13, Mantova",
+                "tipo-visita": [ "sala_giganti"]
+            },
+    
+              "basilica_andrea": {
+      
+                "nome": "Basilica di Sant'Andrea",
+                "descrizione": "Capolavoro del Rinascimento italiano progettato da Leon Battista Alberti nel 1472. Custodisce le reliquie del Preziosissimo Sangue di Cristo e la tomba del pittore Andrea Mantegna.",
+                "collocazione": "Piazza Mantegna 6, Mantova",
+                "tipo-visita": [ "visita_basilica"]
+              }
+    }
+}
