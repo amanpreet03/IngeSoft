@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /*
@@ -94,12 +95,12 @@ public class Visita {
 
     // chiave unica della visita usata nel JSON: "dd-MM-yyyy|tagTipo"
     public String chiaveJson() {
-        return data.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"))
+        return data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))
                + "|" + tipoTag;
     }
 
     @Override
     public String toString() {
-        return data + " – " + tipoTag + " [" + stato + "]";
+        return data + "  " + tipoTag + " [" + stato + "]";
     }
 }
