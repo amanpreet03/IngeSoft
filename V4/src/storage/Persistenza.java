@@ -163,7 +163,7 @@ public class Persistenza {
     // ---- storico.json ----
 
     public static void caricaStorico(Sistema s) {
-        Map<String, Object> root = JsonIO.leggi(Percorsi.STORICO);
+        Map<String, Object> root = JsonIO.leggi(Percorsi.);
         for (Map.Entry<String, Object> e : root.entrySet()) {
             // chiave: "dd-MM-yyyy|tagTipo"
             String[] parti = e.getKey().split("\\|");
@@ -173,6 +173,7 @@ public class Persistenza {
             String luogoTag = JsonIO.strSafe(e.getValue());
             Visita vis = new Visita(tipoTag, luogoTag, data, "");
             vis.setStato(StatoVisita.EFFETTUATA);
+            
             // le visite storiche vanno nell'archivio — trick: usiamo getArchivio riflessione no,
             // usiamo aggiungiVisita poi segnaEffettuata
             // più semplice: getArchivio è unmodifiable, quindi usiamo un workaround
