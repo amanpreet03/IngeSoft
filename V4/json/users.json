@@ -1,80 +1,89 @@
 {
   "primo_avvio": false,
+  
   "conf1": {
     "tipo": 1,
-    "password-hash": "admin",
-    "primo-accesso": false,
-    "username": "conf1"
+    "username": "conf1",
+    "password-hash": "conf1",
+    "primo-accesso": true
+    
   },
   "conf2": {
     "tipo": 1,
-    "password-hash": "admin",
-    "primo-accesso": true,
-    "username": "conf2"
+    "username": "conf2",
+    "password-hash": "conf2",
+    "primo-accesso": true
+    
   },
   "aman": {
     "tipo": 1,
-    "password-hash": "aman",
-    "primo-accesso": true,
-    "username": "aman"
-  },
-  "aman":{
-    "tipo": 1,
+    "username": "aman",
     "password-hash": "aman",
     "primo-accesso": true
-  }
+    
+  },
+
   "volontario1": {
     "tipo": 2,
+    "username": "volontario1",
     "password-hash": "passv1",
     "primo-accesso": false,
-    "username": "volontario1"
+    "tipo-visita": ["camera_sposi", "appartamenti_gonzaga", "visita_basilica"]
+    
   },
   "volontario2": {
     "tipo": 2,
+    "username": "volontario2",
     "password-hash": "passv2",
     "primo-accesso": false,
-    "username": "volontario2"
+    "tipo-visita": ["camera_sposi", "sala_giganti"]
+    
   },
   "volontario3": {
     "tipo": 2,
+    "username": "volontario3",
     "password-hash": "passv3",
     "primo-accesso": false,
-    "username": "volontario3"
+    "tipo-visita": ["sala_giganti", "visita_basilica"]
+    
   },
   "fruitore1": {
     "tipo": 3,
+    "username": "fruitore1",
     "password-hash": "passf1",
     "primo-accesso": false,
-    "username": "fruitore1"
+    "prenotazioni": ["AX12MN01", "BK93PP22"]
+    
   },
   "professori": {
     "tipo": 3,
+    "username": "professori",
     "password-hash": "professori",
-    "primo-accesso": false,
-    "username": "professori"
+    "primo-accesso": false
   },
   
   "fruitore2": {
     "tipo": 3,
+    "username": "fruitore2",
     "password-hash": "passf2",
-    "primo-accesso": false
-,   "username": "fruitore2"
+    "primo-accesso": false,
+    "prenotazioni": ["CZ45QQ33"]
+ 
   },
-  "professori":{
-    "tipo": 3,
-    "password-hash": "professori",
-    "primo-accesso": false
-  }
+  
   "fruitore3": {
     "tipo": 3,
+    "username": "fruitore3",
     "password-hash": "passf3",
-    "primo-accesso": false,
-    "username": "fruitore3"
+    "primo-accesso": false
   },
+  
   "ines": {
     "tipo": 3,
+    "username": "ines",
     "password-hash": "fila",
     "primo-accesso": false,
-    "username": "ines"
+    "prenotazioni": ["DW78RR44", "EV56SS55", "FU34TT66"]
+    
   }
 }
