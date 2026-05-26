@@ -163,7 +163,7 @@ public class Persistenza {
     // ---- storico.json ----
 
     public static void caricaStorico(Sistema s) {
-        Map<String, Object> root = JsonIO.leggi(Percorsi.);
+        Map<String, Object> root = JsonIO.leggi(Percorsi.STORICO);
         for (Map.Entry<String, Object> e : root.entrySet()) {
             // chiave: "dd-MM-yyyy|tagTipo"
             String[] parti = e.getKey().split("\\|");

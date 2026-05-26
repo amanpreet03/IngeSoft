@@ -346,7 +346,9 @@ public class Controller {
     public Set<LocalDate> getDatePrecluse(int anno, int mese) {
         return sistema.getDatePrecluse(anno, mese);
     }
-
+ public Set<LocalDate> getallDatePrecluse() {
+        return sistema.getAllDatePrecluse();
+    }
     
     // VISITE 
     

@@ -193,6 +193,12 @@ public class Sistema {
                 Collections.emptySet()));
     }
 
+    public Set<LocalDate> getAllDatePrecluse() {
+        return datePrecluse.values().stream()
+            .flatMap(Set::stream)
+            .collect(Collectors.toSet());
+    }
+    
     public void cancellaDatePrecluse(int anno, int mese) {
         datePrecluse.remove(anno + "-" + String.format("%02d", mese));
     }

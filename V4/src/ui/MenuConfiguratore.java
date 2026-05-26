@@ -310,8 +310,8 @@ public class MenuConfiguratore {
             System.out.println("  Preclusa: " + d);
         } else {
             LocalDate p = LocalDate.now().plusMonths(1);
-            Set<LocalDate> pr = ctrl.getDatePrecluse(p.getYear(), p.getMonthValue());
-            System.out.println("  Mese " + p.getMonthValue() + "/" + p.getYear() + ":");
+            Set<LocalDate> pr = ctrl.getallDatePrecluse();
+            System.out.println("  Date precluse (tutte):");
             if (pr.isEmpty()) System.out.println("  (nessuna)");
             else pr.stream().sorted().forEach(d -> System.out.println("    " + d));
         }
