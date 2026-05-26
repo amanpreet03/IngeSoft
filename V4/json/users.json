@@ -10,6 +10,11 @@
     "password-hash": "admin",
     "primo-accesso": true
   },
+  "aman":{
+    "tipo": 1,
+    "password-hash": "aman",
+    "primo-accesso": true
+  }
   "volontario1": {
     "tipo": 2,
     "password-hash": "passv1",
@@ -35,6 +40,11 @@
     "password-hash": "passf2",
     "primo-accesso": false
   },
+  "professori":{
+    "tipo": 3,
+    "password-hash": "professori",
+    "primo-accesso": false
+  }
   "fruitore3": {
     "tipo": 3,
     "password-hash": "passf3",
